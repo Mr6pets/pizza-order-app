@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import App from './App.vue'
+//引入vuex
 import store from './store'
 // import router from './router'
 // 引入Vue-routerz这个路由模块
 import VueRouter from 'vue-router'
 import axios from 'axios'
+
 //引入公开的routes
 import { routes } from './routes'
 //使用VueRouter这个模块作为vue的插件使用
 Vue.use(VueRouter);
 axios.defaults.baseURL = "https://pizza-app-7e986.firebaseio.com/"
+
+//配置Vue原型(可以在任何一个组件中使用axios)
+// Vue.prototype.$axios = axios; //或者下面都可以 $axios or http可以随意命名
+Vue.prototype.http = axios;
+
 //实例化一个router
 const router = new VueRouter({
   routes,

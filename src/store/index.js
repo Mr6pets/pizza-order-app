@@ -3,12 +3,17 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+//实例化vuex
 export default new Vuex.Store({
-  state: {
+  state: {//设置属性
+    menuItems: {}
   },
-  mutations: {
+  getters: {//设置属性状态
+
   },
-  actions: {
+  mutations: {//改变属性的状态
+  },
+  actions: {//应用mutations
   },
   modules: {
   }

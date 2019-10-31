@@ -45,7 +45,8 @@ export default {
         axios
           .post("/users.json", formData)
           .then(res => {
-            console.log(res);
+            // console.log(res);
+            this.$router.push({ name: "loginLink" });
           })
           .catch(err => {
             console.log(err);
