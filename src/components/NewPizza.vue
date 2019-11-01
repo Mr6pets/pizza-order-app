@@ -82,8 +82,12 @@ export default {
       //   })
       //   .catch(err => console.log(err));
 
+      // this.http.post("menu.json", data).then(res => {
+      //   this.$router.push({ name: "menuLink" });
+      // });
+      //数据同步到vuex中
       this.http.post("menu.json", data).then(res => {
-        this.$router.push({ name: "menuLink" });
+        this.$store.commit("pushToMenuItems", res);
       });
     }
   }

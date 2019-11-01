@@ -29,6 +29,10 @@ export default {
       password: ""
     };
   },
+  //组件内的守卫
+  beforeRouteEnter(to, from, next) {
+    next(vm => vm.$store.dispatch("setUser", null));
+  },
   methods: {
     onSubmit() {
       axios.get("/users.json").then(res => {
@@ -47,9 +51,11 @@ export default {
         // console.log(result); //符合条件 筛选出了正确的数组[0: {confirmPassword: "123456", emial: "test@test.com", password: "123456"}]
         //判断result的长度大于0
         if (result != null && result.length > 0) {
+          this.$store.dispatch("setUser", result[0].emial);
           this.$router.push({ name: "homeLink" });
         } else {
           alert("账号或密码错误");
+          this.$store.dispatch("setUser", null);
         }
       });
     }

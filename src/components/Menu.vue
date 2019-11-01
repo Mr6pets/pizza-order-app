@@ -60,27 +60,17 @@ export default {
   data() {
     return {
       baskets: [],
-      basketText: "购物车还没有商品！",
-      getMenuItems: {
-        // 1: {
-        //   name: "榴莲pizza",
-        //   description: "这是喜欢吃榴莲朋友的最佳选择",
-        //   options: [{ size: 9, price: 38 }, { size: 12, price: 48 }]
-        // },
-        // 2: {
-        //   name: "芝士pizza",
-        //   description: "这是喜欢吃芝士朋友的最佳选择",
-        //   options: [{ size: 9, price: 38 }, { size: 12, price: 48 }]
-        // },
-        // 3: {
-        //   name: "芒果pizza",
-        //   description: "这是喜欢吃芒果朋友的最佳选择",
-        //   options: [{ size: 9, price: 38 }, { size: 12, price: 48 }]
-        // }
-      }
+      basketText: "购物车还没有商品！"
+      // getMenuItems: {}
     };
   },
   computed: {
+    getMenuItems() {
+      //获取vuex中的数据
+      // return this.$store.state.menuItems;
+      //通过getters获取数据
+      return this.$store.getters.getMenuItems;
+    },
     total() {
       let totalCost = 0;
       for (let index in this.baskets) {
@@ -102,7 +92,7 @@ export default {
       //   .then(data => {
       //     this.getMenuItems = data;
       //   });
-      //axios请求
+      //axios请求firebase数据库
       // axios.get("menu.json").then(res => {
       //   this.getMenuItems = res.data;
       // });
@@ -111,6 +101,10 @@ export default {
       //   this.getMenuItems = res.data;
       // });
       //将请求下来的数据存储到vuex中
+      //获取firebase的数据到vuex的setMenuItem方法中
+      this.http
+        .get("menu.json")
+        .then(res => this.$store.commit("setMunuItems", res.data));
     },
     addToBasket(item, option) {
       let basket = {
