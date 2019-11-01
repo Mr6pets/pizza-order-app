@@ -62,7 +62,7 @@ export default {
         }
         // this.getMenuItems = menuArr;
         //这里是将请求来的数据 传递到vuex中去 这里主要是方便vuex数据的跟新 数据同步
-        this.$store.commit("setMunuItems", menuArr);
+        this.$store.commit("setMenuItems", menuArr);
       });
   },
   methods: {

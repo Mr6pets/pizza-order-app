@@ -104,7 +104,7 @@ export default {
       //获取firebase的数据到vuex的setMenuItem方法中
       this.http
         .get("menu.json")
-        .then(res => this.$store.commit("setMunuItems", res.data));
+        .then(res => this.$store.commit("setMenuItems", res.data));
     },
     addToBasket(item, option) {
       let basket = {
