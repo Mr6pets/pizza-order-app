@@ -11,6 +11,7 @@ import axios from 'axios'
 import { routes } from './routes'
 //使用VueRouter这个模块作为vue的插件使用
 Vue.use(VueRouter);
+//配置了默认根路径是firebase的数据库
 axios.defaults.baseURL = "https://pizza-app-7e986.firebaseio.com/"
 
 //配置Vue原型(可以在任何一个组件中使用axios)
